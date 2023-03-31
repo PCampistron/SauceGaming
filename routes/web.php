@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SauceController;
+use App\Models\Sauce;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/api/sauces', [SauceController::class, 'index']);
+
+Route::get('/api/sauces/:id', [SauceController::class, 'show']);
+
+Route::post('/api/sauces/:id', [SauceController::class, 'store']);
+
+Route::delete('/api/sauces/:id', [SauceController::class, 'destroy']);
+
+Route::post('/api/sauces/:id/like', [SauceController::class, 'like']);
+
+Route::get('/api/sauces', [SauceController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');
